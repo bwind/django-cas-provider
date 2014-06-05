@@ -15,8 +15,7 @@ if all([hasattr(settings, name) for name in alt_models]):
         dot = name.rindex('.')
         module = import_module(name[:dot])
         return getattr(module, name[dot + 1:])
-    ServiceTicket = get_model(alt_models[0])
-    LoginTicket = get_model(alt_models[1])
+    ServiceTicket, LoginTicket = [get_model(m) for m in alt_models]
 
 
 if not ServiceTicket:
