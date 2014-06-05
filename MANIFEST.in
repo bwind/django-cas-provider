@@ -1,1 +1,1 @@
-include cas_provider/templates/*
+recursive-include cas_provider/templates *
