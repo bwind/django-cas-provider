@@ -10,6 +10,5 @@ setup(
     url='http://nitron.org/',
     packages=find_packages(),
     zip_safe=False,
-    install_requires=['setuptools'],
     include_package_data=True,
 )
