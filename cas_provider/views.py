@@ -32,7 +32,7 @@ def login(request, template_name='cas/login.html', success_redirect=None ):
         password = request.POST.get('password', None)
         service = request.POST.get('service', None)
         lt = request.POST.get('lt', None)
-        
+
         try:
             login_ticket = LoginTicket.objects.get(ticket=lt)
         except:
@@ -59,7 +59,7 @@ def login(request, template_name='cas/login.html', success_redirect=None ):
                     errors.append('Incorrect username and/or password.')
     form = LoginForm(service)
     return render_to_response(template_name, {'form': form, 'errors': errors}, context_instance=RequestContext(request))
-    
+
 def validate(request):
     service = request.GET.get('service', None)
     ticket_string = request.GET.get('ticket', None)
@@ -72,8 +72,8 @@ def validate(request):
         except:
             pass
     return HttpResponse("no\n\n")
-    
+
 def logout(request, template_name='cas/logout.html'):
-    url = request.GET.get('url', None)
+    url = request.GET.get('url', settings.LOGIN_URL)
     auth_logout(request)
     return render_to_response(template_name, {'url': url}, context_instance=RequestContext(request))
